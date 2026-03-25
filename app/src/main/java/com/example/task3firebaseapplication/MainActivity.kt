@@ -1,5 +1,6 @@
 package com.example.task3firebaseapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -17,16 +18,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialize Firebase
         auth = FirebaseAuth.getInstance()
 
-        // Link UI elements
         email = findViewById(R.id.email)
         password = findViewById(R.id.password)
         loginBtn = findViewById(R.id.loginBtn)
         signupBtn = findViewById(R.id.signupBtn)
 
-        // Signup
+        // SIGNUP
         signupBtn.setOnClickListener {
             val userEmail = email.text.toString().trim()
             val userPassword = password.text.toString().trim()
@@ -39,13 +38,13 @@ class MainActivity : AppCompatActivity() {
                         if (it.isSuccessful) {
                             Toast.makeText(this, "Signup Successful", Toast.LENGTH_SHORT).show()
                         } else {
-                            Toast.makeText(this, "Error: ${it.exception?.message}", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, "Error: ${it.exception?.message}", Toast.LENGTH_SHORT).show()
                         }
                     }
             }
         }
 
-        // Login
+        // LOGIN
         loginBtn.setOnClickListener {
             val userEmail = email.text.toString().trim()
             val userPassword = password.text.toString().trim()
@@ -54,9 +53,16 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Enter all fields", Toast.LENGTH_SHORT).show()
             } else {
                 auth.signInWithEmailAndPassword(userEmail, userPassword)
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+
                             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+
+                            // ✅ NAVIGATION
+                            val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                            startActivity(intent)
+                            finish()
+
                         } else {
                             Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
                         }
