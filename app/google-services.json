@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "840641117787",
+    "project_id": "task3apex1234",
+    "storage_bucket": "task3apex1234.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840641117787:android:a734bcece4f0eec1e1097e",
+        "android_client_info": {
+          "package_name": "com.example.task3firebaseapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6neLwU3C4lduIpcCsv_mmi5cpB52MpuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
